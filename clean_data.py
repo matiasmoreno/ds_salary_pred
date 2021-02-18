@@ -58,6 +58,22 @@ def location_normalize(loc):
         return 'pune'
     elif 'hyderabad' in loc.lower():
         return 'Hyderabad'
+    elif 'chennai' in loc.lower():
+        return 'chennai'
+    elif 'ncr' in loc.lower():
+        return 'ncr'
+    elif 'noida' in loc.lower():
+        return 'noida'
+    elif 'kolkata' in loc.lower():
+        return 'kolkata'
+    elif 'ahmedabad' in loc.lower():
+        return 'ahmedabad'
+    elif 'kochi' in loc.lower():
+        return 'kochi'
+    elif 'trivandrum' in loc.lower():
+        return 'trivandrum'
+    elif 'jaipur' in loc.lower():
+        return 'jaipur'
     elif 'delhi' in loc.lower():
         return 'delhi'
     else:
@@ -67,7 +83,43 @@ df["location_abbreviation"] = df["location"].apply(lambda x: location_normalize(
 
 # Extrack key tools from job_description
 
+
 # Extract Tittle of job (Senior, Junior, analyst, engineer)
+def job_simplifier(title):
+    if isinstance(title, float):
+        return 'na'
+    elif 'manager' in title.lower():
+        return 'manager'
+    elif 'architect' in title.lower():
+        return 'architect'
+    elif 'engineer' in title.lower():
+        return 'engineer'
+    elif 'scientist' in title.lower():
+        return 'scientist'
+    elif 'analyst' in title.lower():
+        return 'analyst'
+    elif 'developer' in title.lower():
+        return 'developer'
+    elif 'director' in title.lower():
+        return 'director'
+    else:
+        return 'na'
+
+df['job_simplified'] = df['job_desig'].apply(job_simplifier)
+
+def seniority_simplifier(title):
+    if isinstance(title, float):
+        return 'na'
+    elif 'senior' in title.lower():
+        return 'sr'
+    elif 'junior' in title.lower():
+        return 'jr'
+    else:
+        return 'na'
+
+df['seniority_simplified'] = df['job_desig'].apply(seniority_simplifier)
+    
+
 df['jd_aux'] = df['job_desig'].apply(lambda x: '' if isinstance(x, float) else x)
 #senior
 df['jd_senior'] = df['jd_aux'].apply(lambda x: 1 if 'senior' in x.lower() else 0)
@@ -83,6 +135,8 @@ df['jd_engineer'] = df['jd_aux'].apply(lambda x: 1 if 'engineer' in x.lower() el
 df['jd_analyst'] = df['jd_aux'].apply(lambda x: 1 if 'analyst' in x.lower() else 0)
 #developer
 df['jd_developer'] = df['jd_aux'].apply(lambda x: 1 if 'developer' in x.lower() else 0)
+#director
+df['jd_director'] = df['jd_aux'].apply(lambda x: 1 if 'director' in x.lower() else 0)
 
 df.drop(['jd_aux'], inplace=True, axis = 1 )
 
@@ -91,6 +145,8 @@ df.drop(['jd_aux'], inplace=True, axis = 1 )
 df['skill_aux'] = df['key_skills'].apply(lambda x: '' if isinstance(x, float) else x)
 #python
 df['sk_python'] = df['skill_aux'].apply(lambda x: 1 if 'python' in x.lower() else 0)
+#excel
+df['sk_excel'] = df['skill_aux'].apply(lambda x: 1 if 'excel' in x.lower() else 0)
 # sas
 df['sk_r'] = df['skill_aux'].apply(lambda x: 1 if 'sas' in x.lower() else 0)
 # Time Series
