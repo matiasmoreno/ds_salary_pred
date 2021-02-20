@@ -101,6 +101,7 @@ with open(model_file, 'rb') as pickled:
     mean_absolute_error(y_test, pred_rf)
 # Test one instance
 X_test.iloc[1,:].values.reshape(1, -1)
+#list(X_test.iloc[1,:])
 model.predict(X_test.iloc[1,:].values.reshape(1, -1))
 
 print('Done!')
