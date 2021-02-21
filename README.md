@@ -32,11 +32,10 @@ After scraping the data, I needed to clean it up so that it was usable for our m
 ## EDA
 I looked at the distributions of the data and the value counts for the various categorical variables. Below are a few highlights tables. 
 
-![alt text](https://github.com/matiasmoreno/ds_salary_pred/edit/master/images/earn_by_tittle.PNG "Title Histogram")
-![alt text](https://github.com/matiasmoreno/ds_salary_pred/edit/master/images/skill_words.png "Common Skll words")
-![alt text](https://github.com/matiasmoreno/ds_salary_pred/edit/master/images/correlations.png "Correlations")
-![alt text](https://github.com/matiasmoreno/ds_salary_pred/edit/master/images/earn_by_param.png "Earnings by parameters")
-
+![alt text](https://github.com/matiasmoreno/ds_salary_pred/blob/master/images/earn_by_tittle.PNG "Title Histogram")
+![alt text](https://github.com/matiasmoreno/ds_salary_pred/blob/master/images/skill_words.png "Common Skll words")
+![alt text](https://github.com/matiasmoreno/ds_salary_pred/blob/master/images/correlations.png "Correlations")
+![alt text](https://github.com/matiasmoreno/ds_salary_pred/blob/master/images/earn_by_param.png "Earnings by parameters")
 ## Model Building 
 
 First, I transformed the categorical variables into dummy variables. I also split the data into train and tests sets with a test size of 20%.   
